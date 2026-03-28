@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Nhi 🎂</title>
+    <style>
+        /* CSS GIAO DIỆN - TỐI GIẢN & HIỆN ĐẠI */
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fafafa; color: #333; overflow-x: hidden; text-align: center; }
+        .container { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; transition: opacity 0.5s ease; }
+        .hidden { display: none !important; opacity: 0; }
+        
+        /* 1. Phần Bánh Sinh Nhật */
+        #cake-section { background-color: #fff; }
+        .cake { font-size: 100px; cursor: pointer; transition: transform 0.3s ease; animation: float 3s ease-in-out infinite; }
+        .cake:hover { transform: scale(1.1); }
+        .instruction { font-size: 14px; color: #888; margin-top: 10px; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        /* 2. Phần Lời Chúc */
+        #wish-section h1 { font-weight: 300; letter-spacing: 2px; color: #e91e63; }
+        .wish-text { max-width: 500px; font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 30px; }
+
+        /* 3. Phần Album Ảnh */
+        #gallery-section { width: 100%; max-width: 800px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; width: 100%; margin-top: 20px; }
+        .gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+        .gallery img:hover { transform: scale(1.05); }
+
+        /* 4. Phần Tỏ Tình */
+        #confess-section { background-color: #e91e63; color: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        #confess-section h2 { font-weight: 400; }
+        .confess-text { font-size: 16px; font-style: italic; opacity: 0.9; margin-bottom: 30px; }
+
+        /* Nút bấm chung */
+        .btn { background-color: #333; color: white; border: none; padding: 12px 24px; font-size: 14px; border-radius: 25px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; text-transform: uppercase; letter-spacing: 1px; }
+        .btn:hover { background-color: #555; transform: translateY(-2px); }
+        .btn-white { background-color: white; color: #e91e63; }
+        .btn-white:hover { background-color: #f0f0f0; }
+
+    </style>
+</head>
+<body>
+
+    <div id="cake-section" class="container">
+        <div class="cake" onclick="blowCandle()">🎂</div>
+        <div class="wish-text">Chào Nhi, nhân ngày đặc biệt này...</div>
+        <div class="instruction">(Bấm vào chiếc bánh để nhận bất ngờ nhé)</div>
+    </div>
+
+    <div id="wish-section" class="container hidden">
+        <h1>Happy Birthday, Thanh Nhi!</h1>
+        <div class="wish-text">
+            Chúc Nhi tuổi mới luôn xinh đẹp, rạng rỡ và hạnh phúc. Mong rằng mọi dự định của cậu trong tuổi mới đều thành công rực rỡ. Hôm nay là ngày của cậu, hãy tận hưởng nó thật trọn vẹn nhé!
+        </div>
+        <button class="btn" onclick="showGallery()">Xem một vài kỉ niệm</button>
+    </div>
+
+    <div id="gallery-section" class="container hidden">
+        <h2>Những khoảnh khắc đáng nhớ</h2>
+        <div class="gallery">
+            <img src="Nhi-1.png" alt="Thanh Nhi">
+            <img src="Nhi-2.png" alt="Chúng mình">
+            <img src="Nhi-3.png" alt="Thanh Nhi">
+            <img src="Nhi-4.png" alt="Chúng mình">
+            <img src="Nhi-5.png" alt="Thanh Nhi">
+            <img src="Nhi-6.png" alt="Chúng mình">
+            </div>
+        <div style="margin-top: 30px;">
+            <button class="btn" onclick="showConfess()">Tớ có điều này muốn nói...</button>
+        </div>
+    </div>
+
+    <div id="confess-section" class="container hidden">
+        <h2>Nhật & Nhi</h2>
+        <div class="confess-text wish-text">
+            "Nhi này, 1 tháng tìm hiểu chưa phải là dài, nhưng cũng đủ để Nhật nhận ra Nhi là một mảnh ghép đặc biệt. Mỗi khoảnh khắc ở bên Nhi, từ lúc uống cafe đến lúc đi dạo, đều làm Nhật thấy rất vui và bình yên. <br><br>
+            Cái vòng đôi này mang một 'mật mã' riêng của hai đứa (chữ N & N hay tọa độ), và Nhật hi vọng Nhi sẽ cho phép Nhật là người đeo nó cho Nhi hôm nay. <br><br>
+            Thanh Nhi, cậu làm bạn gái của Thanh Nhật nhé?"
+        </div>
+        <button class="btn btn-white">YES</button>
+    </div>
+
+    <script>
+        // JS XỬ LÝ CHUYỂN CẢNH
+        function showSection(currentId, nextId) {
+            const current = document.getElementById(currentId);
+            const next = document.getElementById(nextId);
+            current.classList.add('hidden');
+            next.classList.remove('hidden');
+            window.scrollTo(0, 0); // Cuộn lên đầu trang
+        }
+
+        function blowCandle() {
+            const cake = document.querySelector('.cake');
+            cake.innerHTML = "✨"; // Hiệu ứng thổi nến
+            cake.style.transform = "scale(1.5)";
+            setTimeout(() => {
+                showSection('cake-section', 'wish-section');
+            }, 1000); // Đợi 1s rồi chuyển cảnh
+        }
+
+        function showGallery() {
+            showSection('wish-section', 'gallery-section');
+        }
+
+        function showConfess() {
+            showSection('gallery-section', 'confess-section');
+        }
+    </script>
+</body>
+</html>
