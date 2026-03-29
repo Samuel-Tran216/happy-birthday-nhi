@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Nhi 🎂</title>
+    <style>
+        /* CSS GIAO DIỆN CHÍNH */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #fde2e4; /* Màu hồng pastel */
+            color: #333; 
+            overflow-x: hidden; 
+            text-align: center; 
+        }
+        
+        .container { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; transition: opacity 0.5s ease; }
+        .hidden { display: none !important; opacity: 0; }
+        
+        /* 1. Phần Bánh Sinh Nhật & Chó */
+        #cake-section { position: relative; }
+        .dog-wrapper { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
+        .dog-img { width: 80px; height: 80px; object-fit: cover; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 8px; }
+        .cake { font-size: 100px; cursor: pointer; transition: transform 0.3s ease; animation: float 3s ease-in-out infinite; }
+        .cake:hover { transform: scale(1.1); }
+        .instruction { font-size: 13px; color: #777; margin-top: 15px; font-style: italic; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        /* 2. Phần Lời Chúc */
+        #wish-section h1 { font-weight: 300; letter-spacing: 2px; color: #e91e63; }
+        .wish-text { max-width: 500px; font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 30px; }
+
+        /* 3. Phần Album Ảnh (Thiết kế kiểu khung ảnh Polaroid có chữ) */
+        #gallery-section { width: 100%; max-width: 900px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; width: 100%; margin-top: 20px; }
+        
+        .photo-card {
+            background-color: white;
+            padding: 10px 10px 15px 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .photo-card:hover { transform: scale(1.05); box-shadow: 0 8px 16px rgba(0,0,0,0.12); }
+        .photo-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; }
+        .caption { margin-top: 12px; font-size: 13px; color: #555; font-style: italic; line-height: 1.4; }
+
+        /* 4. Phần Tỏ Tình */
+        #confess-section { background-color: #e91e63; color: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-width: 600px; margin: 0 15px; }
+        #confess-section h2 { font-weight: 400; margin-top: 0; }
+        .confess-text { font-size: 16px; font-style: italic; opacity: 0.9; margin-bottom: 30px; color: white; line-height: 1.8; }
+
+        /* 5. Phần Kết Quả Sau Khi Bấm YES */
+        #success-section h2 { color: #e91e63; font-size: 28px; margin-bottom: 20px; }
+        .final-img { max-width: 300px; width: 100%; border-radius: 15px; border: 6px solid white; box-shadow: 0 8px 20px rgba(0,0,0,0.15); object-fit: cover; }
+
+        /* Nút bấm chung */
+        .btn { background-color: #333; color: white; border: none; padding: 12px 24px; font-size: 14px; border-radius: 25px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; text-transform: uppercase; letter-spacing: 1px; }
+        .btn:hover { background-color: #555; transform: translateY(-2px); }
+        .btn-white { background-color: white; color: #e91e63; font-weight: bold; font-size: 16px; padding: 12px 35px;}
+        .btn-white:hover { background-color: #f0f0f0; transform: scale(1.1); }
+
+    </style>
+</head>
+<body>
+
+    <div id="cake-section" class="container">
+        <div class="dog-wrapper">
+            <img src="golden.png" alt="Golden" class="dog-img">
+            <img src="corgi.png" alt="Corgi" class="dog-img">
+        </div>
+        <div class="cake" onclick="blowCandle()">🎂</div>
+        <div class="wish-text">Hi em Nhi, hum nay là 30/3 nhân ngày đặc biệt này...</div>
+        <div class="instruction">(Bấm vào chiếc bánh nàii để nhận bất ngờ nèee)</div>
+    </div>
+
+    <div id="wish-section" class="container hidden">
+        <h1>Happy Birthday, Thanh Nhiii<3!</h1>
+        <div class="wish-text">
+            From anh Nhật 23 tuổi gửi em Nhi tuổi 24. Chúc em Nhi tuổi mới luôn xinh gái, rạng rỡ, hạnh phúc và nụ cười luôn nở trên môi. Mong rằng mọi dự định của cậu trong tuổi 24 này đều thành công tốt đẹp và rực rỡ. Mãi là Thanh Nhi mà ngày đầu tiên em gặp nhé. Hôm nay là ngày của em, hãy tận hưởng nó thật trọn vẹn nhé!
+        </div>
+        <button class="btn" onclick="showGallery()">Xem một vài kỉ niệm</button>
+    </div>
+
+    <div id="gallery-section" class="container hidden">
+        <h2>Góc ảnh kỉ niệm hẹ hẹ</h2>
+        <div class="gallery">
+            <div class="photo-card">
+                <img src="Nhi-2.png" alt="Ảnh 2">
+                <div class="caption">Chất liệu thấp nma chất lượng cao</div>
+            </div>
+            <div class="photo-card">
+                <img src="Nhi-3.png" alt="Ảnh 3">
+                <div class="caption">Chúng mình lần đầu chụp film chung với nhau nè</div>
+            </div>
+            <div class="photo-card">
+                <img src="Nhi-1.png" alt="Ảnh 1">
+                <div class="caption">2 đứa khùm hen</div>
+            </div>
+            <div class="photo-card">
+                <img src="Nhi-4.png" alt="Ảnh 4">
+                <div class="caption">Anh thích tấm ni của em</div>
+            </div>
+            <div class="photo-card">
+                <img src="Nhi-6.png" alt="Ảnh 6">
+                <div class="caption">Hai bông hoa chung một khung hình!!!</div>
+            </div>
+            <div class="photo-card">
+                <img src="Nhi-8.png" alt="Ảnh 8">
+                <div class="caption">Nhi và anh trai bí ẩn!!</div>
+            </div>
+        </div>
+        <div style="margin-top: 40px;">
+            <button class="btn" onclick="showConfess()">Tớ có điều này muốn nói...</button>
+        </div>
+    </div>
+
+    <div id="confess-section" class="container hidden">
+        <h2>Nhật & Nhi</h2>
+        <div class="confess-text">
+           
+            "Nhi này, 1 tháng tìm hiểu cũng không phải là dài, nhưng cũng đủ để em có thể tìm hiểu chị. Mỗi khoảnh khắc ở bên Nhi, từ lúc uống cafe đến lúc đi dạo, đều làm em thấy rất vui và bình yên. <br><br>
+            Trước đó, chị đã có những mối tình không hoàn hảo, như ý muốn nhưng mà chuyện cũ rùi nên mình cất gọn vào 1 góc nha. <br><br>
+            Và bây giờ, ông trời cho chị hi vọng mới là em Nhật đây, 1 tháng qa chị cũng đã thấy được rồi. <br><br>
+            Em không hứa trước điều gì cả, nhưng em luôn hết mình vì tình yêu và cả chị Nhi nữa. Nếu chị mở lòng thì.... Chị Nhi à, chị làm bạn gái của em nha.....?"
+
+        </div>
+        <button class="btn btn-white" onclick="sayYes()">YES</button>
+    </div>
+
+    <div id="success-section" class="container hidden">
+        <h2>I Love You ❤️</h2>
+        <img src="anh-chot-ha.png" alt="Thanh Nhi" class="final-img">
+        <div class="instruction" style="margin-top: 20px; font-size: 16px;">(Dễ huông quá đi cái đồ đáng iu!)</div>
+    </div>
+
+    <script>
+        function showSection(currentId, nextId) {
+            const current = document.getElementById(currentId);
+            const next = document.getElementById(nextId);
+            current.classList.add('hidden');
+            next.classList.remove('hidden');
+            window.scrollTo(0, 0); 
+        }
+
+        function blowCandle() {
+            const cake = document.querySelector('.cake');
+            cake.innerHTML = "✨"; 
+            cake.style.transform = "scale(1.5)";
+            setTimeout(() => {
+                showSection('cake-section', 'wish-section');
+            }, 1000); 
+        }
+
+        function showGallery() {
+            showSection('wish-section', 'gallery-section');
+        }
+
+        function showConfess() {
+            showSection('gallery-section', 'confess-section');
+        }
+
+        // Hàm mới: Chuyển sang trang ảnh cuối cùng khi bấm YES
+        function sayYes() {
+            showSection('confess-section', 'success-section');
+        }
+    </script>
+</body>
+</html>
